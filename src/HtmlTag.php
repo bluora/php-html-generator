@@ -19,6 +19,9 @@ class HtmlTag extends Markup
         if (!isset($this->attributeList['class']) || is_null($this->attributeList['class'])) {
             $this->attributeList['class'] = array();
         }
+        if (function_exists('hookAddClassHtmlTag')) {
+            hookAddClassHtmlTag($value);
+        }
         $this->attributeList['class'][] = $value;
         return $this;
     }
