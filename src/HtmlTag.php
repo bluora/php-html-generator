@@ -68,14 +68,17 @@ class HtmlTag extends Markup
     }
 
     /**
-     * Shortcut to set('href', $value).
+     * Shortcut to set('href', $value). Only works with A tags.
      *
      * @param string $value
      * @return HtmlTag instance
      */
     public function href($value)
     {
-        return parent::attr('href', $value);
+        if ($this->tag === 'a') {
+            return parent::attr('href', $value);
+        }
+        return $this;
     }
 
     /**
@@ -190,6 +193,7 @@ class HtmlTag extends Markup
         if ($this->tag === 'textarea') {
             return parent::attr('rows', $rows);
         }
+        return $this;
     }
 
     /**
