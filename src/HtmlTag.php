@@ -213,6 +213,20 @@ class HtmlTag extends Markup
     }
 
     /**
+     * Shortcut to set('src', $value).
+     *
+     * @param string $value
+     * @return HtmlTag instance
+     */
+    public function src($value)
+    {
+        if ($this->tag === 'img') {
+            return parent::attr('src', $value);
+        }
+        return $this;
+    }
+
+    /**
      * Shortcut to set('style', $value).
      *
      * @param string $value
