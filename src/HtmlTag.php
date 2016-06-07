@@ -27,6 +27,34 @@ class HtmlTag extends Markup
     }
 
     /**
+     * Shortcut to set('autofocus', $value). Only works with BUTTON, INPUT, KEYGEN, SELECT, TEXTAREA tags.
+     *
+     * @param string $value
+     * @return HtmlTag instance
+     */
+    public function autofocus($value)
+    {
+        if (in_array($this->tag, ['button', 'input', 'keygen', 'select', 'textarea'])) {
+            return parent::attr('autofocus', 'autofocus');
+        }
+        return $this;
+    }
+
+    /**
+     * Shortcut to set('autocomplete', $value). Only works with FORM, INPUT tags.
+     *
+     * @param string $value
+     * @return HtmlTag instance
+     */
+    public function autocomplete($value)
+    {
+        if (in_array($this->tag, ['form', 'input'])) {
+            return parent::attr('autocomplete', 'autofocus');
+        }
+        return $this;
+    }
+
+    /**
      * Shortcut to set('checked', $value).
      *
      * @param boolean $value
